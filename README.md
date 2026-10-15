@@ -24,7 +24,7 @@ this repo is what visitors see.
 
 Search `index.html` for these and replace them:
 
-* `[MEDIUM_LINK]` -> the web address of your Medium essay (appears 3 times: hero button, Writing card, footer).
+* The Medium links currently point to your profile (`https://medium.com/@fumblinggum`). To link the essay directly, replace that address in the Writing card (and anywhere else you like) with the essay's own address.
 * `[ESSAY_TITLE]` -> the essay's title (once, in the Writing section).
 
 Also check the web address `fumblinghell.github.io` (in `index.html` meta tags and in `cv/cv.md`).
