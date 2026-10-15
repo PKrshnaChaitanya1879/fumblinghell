@@ -20,12 +20,9 @@ this repo is what visitors see.
 | `tools/optimise_images.py` | Shrinks photos from `photos/` and fills the gallery. |
 | `.nojekyll` | Tells GitHub Pages "just serve the files as they are". Leave it. |
 
-## Two things to fill in first
+## Writing card and web address
 
-Search `index.html` for these and replace them:
-
-* The Medium links currently point to your profile (`https://medium.com/@fumblinggum`). To link the essay directly, replace that address in the Writing card (and anywhere else you like) with the essay's own address.
-* `[ESSAY_TITLE]` -> the essay's title (once, in the Writing section).
+* The Writing card links to your time-crystals essay. To feature a different essay, change the address, title and one-line description in the Writing section of `index.html`.
 
 Also check the web address `fumblinghell.github.io` (in `index.html` meta tags and in `cv/cv.md`).
 It is right only if your repository is named exactly `fumblinghell.github.io`.
