@@ -207,8 +207,10 @@ section { padding: clamp(56px, 9vw, 112px) 0; border-top: 1px solid var(--line);
 }
 
 /* ---------- Writing ---------- */
+.essays { display: grid; gap: 20px; margin-top: 40px; }
+@media (min-width: 900px) { .essays { grid-template-columns: 1fr 1fr; gap: 24px; } }
 .essay {
-  display: grid; gap: 8px; margin-top: 40px;
+  display: grid; gap: 8px; grid-template-rows: auto auto auto 1fr;
   background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
   padding: clamp(24px, 4vw, 40px); color: var(--text);
   transition: transform .25s cubic-bezier(.16, 1, .3, 1);
@@ -217,7 +219,7 @@ section { padding: clamp(56px, 9vw, 112px) 0; border-top: 1px solid var(--line);
 .essay-source { font-size: 13px; font-weight: 600; color: var(--muted); }
 .essay-title { font-size: clamp(24px, 3.4vw, 34px); line-height: 1.15; letter-spacing: -.03em; font-weight: 700; }
 .essay-sub { color: var(--muted); }
-.essay-go { margin-top: 12px; color: var(--accent); font-weight: 500; }
+.essay-go { align-self: end; padding-top: 12px; color: var(--accent); font-weight: 500; }
 
 /* ---------- Photography ---------- */
 .subline { margin-top: 12px; color: var(--muted); }
