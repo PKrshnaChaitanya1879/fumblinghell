@@ -24,8 +24,8 @@ this repo is what visitors see.
 
 * The Writing section has two essay cards (time crystals, and the first-year comedy essay). To change one, change the address, title and one-line description in the Writing section of `index.html`.
 
-Also check the web address `fumblinghell.github.io` (in `index.html` meta tags and in `cv/cv.md`).
-It is right only if your repository is named exactly `fumblinghell.github.io`.
+Also check the web address `pkrshnachaitanya1879.github.io` (in `index.html` meta tags and in `cv/cv.md`).
+It is right only if your repository is named exactly `pkrshnachaitanya1879.github.io`.
 
 ## How to change any piece of text
 

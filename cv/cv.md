@@ -1,6 +1,6 @@
 # P. Krishna Chaitanya
 
-Hyderabad, India | krishnachaitanya1879@gmail.com | fumblinghell.github.io
+Hyderabad, India | krishnachaitanya1879@gmail.com | pkrshnachaitanya1879.github.io
 
 ## Profile
 
