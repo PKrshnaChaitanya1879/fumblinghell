@@ -154,6 +154,8 @@ section { padding: clamp(56px, 9vw, 112px) 0; border-top: 1px solid var(--line);
 .card-body { padding: 28px; }
 .card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
 .card .bullets { margin-top: 8px; font-size: 16px; }
+.card h4 { margin: 28px 0 0; font-size: 16px; letter-spacing: -.01em; font-weight: 600; }
+.card h4 + .meta { margin-top: 2px; font-size: 14px; }
 .tag {
   font-size: 12px; font-weight: 600; color: var(--accent);
   padding: 3px 10px; border-radius: 999px; background: rgba(0, 102, 204, .08);
