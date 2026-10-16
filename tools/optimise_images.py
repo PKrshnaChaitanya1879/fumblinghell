@@ -13,6 +13,7 @@ Your originals in photos/ are never changed.
 Needs:  pip install pillow
 """
 import html
+import json
 import re
 from pathlib import Path
 
@@ -23,6 +24,7 @@ SRC, IMG = ROOT / "photos", ROOT / "assets" / "img"
 GALLERY = IMG / "photography"
 EXT = {".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff"}
 LIMIT = 250 * 1024
+ALT_FILE = ROOT / "tools" / "alt_text.json"  # plain descriptions, one per photo name
 
 
 def save(path: Path, out: Path, max_w: int):
@@ -47,13 +49,14 @@ def main():
     if not files:
         print("No photos in photos/ yet. Add some and run this again.")
         return
+    ALT = json.loads(ALT_FILE.read_text(encoding="utf-8")) if ALT_FILE.exists() else {}
     IMG.mkdir(parents=True, exist_ok=True)
     GALLERY.mkdir(parents=True, exist_ok=True)
     tiles = []
     for p in files:
         if p.stem.lower().startswith("fuji-"):
             w, h = save(p, GALLERY / (p.stem + ".webp"), 1800)
-            alt = html.escape(p.stem.replace("-", " ").replace("_", " ").title())
+            alt = html.escape(ALT.get(p.stem) or p.stem.replace("-", " ").replace("_", " ").title())
             tiles.append(
                 f'          <figure class="tile"><button type="button" aria-label="Open photo: {alt}">'
                 f'<img src="assets/img/photography/{p.stem}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy">'

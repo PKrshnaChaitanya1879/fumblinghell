@@ -41,9 +41,10 @@ It is right only if your repository is named exactly `pkrshnachaitanya1879.githu
 
 1. Put your photos in the `photos/` folder.
    * Gallery photos must start with `fuji-`, for example `fuji-01.jpg`.
-   * Project photos: `rocket-motor.jpg`, `openvsp-model.jpg`, `cavity-flow.jpg`.
-2. Run: `python3 tools/optimise_images.py` (needs `pip install pillow` once).
-3. Commit and push. The grey "photo goes here" boxes are replaced automatically,
+   * Project photos: `rocket-motor.jpg`, `lab-uoh.jpg` (the Research card), `openvsp-model.jpg`, `cavity-flow.jpg`.
+2. (Optional) add a plain description of each photo to `tools/alt_text.json`; it becomes the photo's alt text for screen readers.
+3. Run: `python3 tools/optimise_images.py` (needs `pip install pillow` once).
+4. Commit and push. The grey "photo goes here" boxes are replaced automatically,
    and the gallery is rewritten with your photos.
 
 **By hand:** save an image as `assets/img/rocket-motor.webp` (or `openvsp-model.webp`,

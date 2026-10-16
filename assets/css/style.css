@@ -112,8 +112,9 @@ section { padding: clamp(56px, 9vw, 112px) 0; border-top: 1px solid var(--line);
 .research-copy h3 { max-width: 24em; }
 .research-copy .meta { margin-top: 8px; }
 .research-copy .bullets { margin-top: 12px; }
+.research-side { display: grid; gap: 24px; align-self: start; }
+.research-side .slot { border-radius: var(--radius); box-shadow: var(--shadow); }
 .density {
-  align-self: start;
   background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
   padding: 28px;
 }
