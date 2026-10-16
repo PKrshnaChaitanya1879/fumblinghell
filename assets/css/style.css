@@ -629,3 +629,41 @@ h4.mini + .bullets li:first-child { margin-top: 8px; }
 .mini-builds p { color: var(--muted); font-size: 15px; }
 /* keep Greek letters (2θ, Kα) intact on the XRD figure */
 .xrd .drawing-head, .xrd .drawing-legend, .xrd .axl, .xrd .tl { text-transform: none; }
+
+/* ---------- Long-form sub pages (HandMouse 2 report, guide, poster) ---------- */
+.page-hero .buttons { margin-top: 28px; }
+.doc-sec { padding: clamp(28px, 4vw, 48px) 0; }
+.doc-sec .section-title { padding-top: 14px; border-top: 1px solid var(--line-strong); font-size: clamp(22px, 2.6vw, 32px); }
+.page-hero h1 { overflow-wrap: anywhere; }
+.prose { max-width: 42em; font-size: 17px; line-height: 1.6; min-width: 0; }
+.prose > * + * { margin-top: 16px; }
+.prose h3 { margin-top: 32px; font-size: 15px; font-family: var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.prose ul, .prose ol { padding-left: 1.3em; }
+.prose ul { list-style: square; }
+.prose ol { list-style: decimal; }
+.prose li + li { margin-top: 8px; }
+.prose li > ul { margin-top: 8px; }
+.prose li::marker { color: var(--accent-text); }
+.prose code, .prose kbd { font-family: var(--mono); font-size: .86em; padding: 1px 5px; border: 1px solid var(--line-strong); background: var(--surface); overflow-wrap: anywhere; }
+.prose pre { font-family: var(--mono); font-size: 13px; line-height: 1.6; padding: 16px 18px; border: 1px solid var(--line-strong); background: var(--surface); overflow-x: auto; white-space: pre; }
+.table-scroll { overflow-x: auto; border: 1px solid var(--line-strong); }
+.prose table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.45; }
+.prose th, .prose td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.prose tbody tr:last-child td { border-bottom: 0; }
+.prose th { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--surface); }
+.prose .buttons { margin-top: 32px; }
+.doc-fig img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line-strong); }
+.doc-fig figcaption { margin-top: 8px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
+.doc-fig.wide { margin-top: 32px; }
+.poster-slot { aspect-ratio: 485 / 686; max-width: 320px; border: 1px solid var(--line-strong); }
+
+/* Builds: small thumbnail on a regular build card */
+.build-card .card-thumb { width: 96px; height: auto; border: 1px solid var(--line-strong); margin-bottom: 6px; }
+
+/* Projects: a single card laid out as a row (NUPC poster) */
+.card-row { margin-top: 20px; display: grid; }
+.card-row .slot { border-bottom: 1px solid var(--line-strong); aspect-ratio: 16 / 9; }
+@media (min-width: 760px) {
+  .card-row { grid-template-columns: 1fr 2fr; }
+  .card-row .slot { border-bottom: 0; border-right: 1px solid var(--line-strong); aspect-ratio: auto; min-height: 220px; }
+}

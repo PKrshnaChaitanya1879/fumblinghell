@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HandMouse 2 | P. Krishna Chaitanya</title>
+  <meta name="description" content="HandMouse 2: webcam hand control for Windows. Pinch to click, palm-anchored cursor, first-run tutorial. Runs at 32 fps on a budget laptop.">
+  <meta name="theme-color" content="#efeee8">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HandMouse 2 | P. Krishna Chaitanya">
+  <meta property="og:description" content="Webcam hand control for Windows: pinch to click, palm-anchored cursor, first-run tutorial.">
+  <meta property="og:url" content="https://pkrshnachaitanya1879.github.io/handmouse.html">
+  <meta property="og:image" content="https://pkrshnachaitanya1879.github.io/assets/img/handmouse/tutorial-card-click.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="progress" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="P. Krishna Chaitanya, back to home page">PKC</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html#research">Research</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#builds">Builds</a></li>
+          <li><a href="index.html#writing">Writing</a></li>
+          <li><a href="index.html#photography">Photography</a></li>
+          <li><a href="cv/P_Krishna_Chaitanya_CV.pdf">CV</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    </div>
+  </header>
+
+    <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <a class="back" href="index.html#builds">← Back to Builds</a>
+        <h1>HandMouse 2</h1>
+        <p class="lede">Controlling a Windows laptop with hand gestures and a webcam.</p>
+        <p class="small">October 2026 · AI-directed build: I set the requirements, made the design decisions, and tested and tuned it on my own laptop. Claude (Anthropic) wrote the code.</p>
+        <div class="buttons">
+          <!-- TODO: upload HandMouse2.exe (about 100 MB, too big to commit) to a GitHub Release on this repo; this link then downloads the newest one. -->
+          <a class="btn primary" href="https://github.com/PKrshnaChaitanya1879/fumblinghell/releases/latest/download/HandMouse2.exe">Download for Windows</a>
+          <a class="btn" href="handmouse-guide.html">User guide</a>
+          <a class="btn" href="handmouse/HandMouse2.py">Source code</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="summary">
+      <div class="wrap grid-2">
+        <h2 class="section-title">Summary</h2>
+        <div class="prose">
+          <figure class="doc-fig">
+            <img src="assets/img/handmouse/handmouse-camera-view.webp" alt="HandMouse 2 camera view: the status pill reads Tracking, Pinch to click, with a hand skeleton drawn over the webcam image and 32 fps, 18 ms at the bottom" width="340" height="285">
+            <figcaption>Camera view, tracking a hand at 32 fps.</figcaption>
+          </figure>
+          <p>HandMouse 2 turns an ordinary laptop webcam into a pointing device. You move the cursor with your palm, pinch your thumb and index finger to click or drag, and pinch your thumb and middle finger to right-click or scroll. It runs locally on a budget laptop (AMD Ryzen 3 5300U, integrated graphics) at <strong>32 frames per second, with each frame processed in 18 ms</strong>, measured on that machine.</p>
+          <p>It replaces my first version, HandMouse 1 (October 2026), which worked but was hard to use. This report covers what went wrong in version 1, the ideas I took from Apple's gesture design, how version 2 works, and what it still can't do.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="version-1">
+      <div class="wrap grid-2">
+        <h2 class="section-title">What was wrong with version 1</h2>
+        <div class="prose">
+          <p>Version 1 had eight gestures: a bent index finger to click, a fist, an open palm, the letters V, C and O for app switching, a pinch to drag, and a long blink to take a photo. When I tested it:</p>
+          <ul>
+            <li><strong>The cursor jittered</strong>, even with my hand held still.</li>
+            <li><strong>Clicking moved the cursor.</strong> Bending the index finger to click also moved the fingertip that was steering the cursor, so clicks landed off target.</li>
+            <li><strong>Gestures were misread.</strong> A clean V sign was read as an open palm. The first fix was to measure finger extension in the 2D camera image instead of estimating depth.</li>
+            <li><strong>It was slow on my laptop,</strong> because a face model ran alongside the hand model to detect blinks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="apple">
+      <div class="wrap grid-2">
+        <h2 class="section-title">What I took from Apple</h2>
+        <div class="prose">
+          <p>I studied how Apple designs hand input for Vision Pro and the Apple Watch double tap. Four ideas carried over:</p>
+          <ol>
+            <li><strong>Aiming and confirming are separate.</strong> On Vision Pro your eyes aim and a pinch confirms, so confirming never disturbs the aim. HandMouse 2 anchors the cursor to the palm (the midpoint of the index and middle knuckles), which barely moves when you pinch.</li>
+            <li><strong>A pinch is the main action.</strong> A thumb touching a finger is a distinct, deliberate signal and easy to tell apart from ordinary hand movement.</li>
+            <li><strong>Few gestures, each done on purpose.</strong> Apple Watch's double tap is one narrow gesture mapped to the main action. I dropped every extra gesture from version 1 (fist, palm, V/C/O, blink). Nothing happens unless you pinch.</li>
+            <li><strong>Small movements, quiet feedback.</strong> Your hand should be able to rest and move a little. Feedback is a subtle ring, not a busy display.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="how-it-works">
+      <div class="wrap grid-2">
+        <h2 class="section-title">How it works</h2>
+        <div class="prose">
+<pre aria-label="Processing pipeline">webcam 640×480, 30 fps
+  → MediaPipe Hands (lite model), 21 hand landmarks
+  → palm anchor (index + middle knuckles)
+  → One Euro filter
+  → pinch state machine
+  → 120 Hz cursor glide
+  → Windows mouse input</pre>
+          <ul>
+            <li><strong>Reach area.</strong> A rectangle in the middle of the camera image maps onto the whole screen, so you don't have to stretch to reach the corners. I narrowed it after testing, because reaching the top edge was pushing my fingers out of the camera frame.</li>
+            <li><strong>Smoothing.</strong> The One Euro filter (Casiez, Roussel and Vogel, CHI 2012) adapts to speed. It smooths heavily when your hand is nearly still, which removes jitter, and lightly when it moves fast, which avoids lag. A separate thread then eases the cursor towards its target 120 times a second, so motion looks fluid even though the camera only gives 30 frames a second.</li>
+            <li><strong>Pinch detection.</strong> The gap between two fingertips is divided by the length of the palm, so the threshold works at any distance from the camera. A pinch counts as closed below 0.19 of a palm length and open above 0.28. The gap between those two thresholds stops the state flickering at the boundary.</li>
+            <li><strong>Click lock.</strong> As a pinch closes, the cursor slows down. While fingers are touching it is locked in place, which makes clicks land where you aimed. If you keep holding the pinch for 0.22 s, or move your hand, it becomes a drag.</li>
+            <li><strong>Interface.</strong> The interface is a small status pill at the top of the screen and a ring around the cursor that fills as you pinch. Both are drawn as native transparent Windows layered windows. Clicking the pill shows the camera view with the hand skeleton and the reach area.</li>
+            <li><strong>Safety and privacy.</strong> <kbd>Ctrl+Alt+H</kbd> pauses tracking from anywhere. Pausing switches the camera off. If the hand leaves the frame mid-drag, the mouse button is released. Everything runs on the laptop and nothing is uploaded.</li>
+          </ul>
+          <figure class="doc-fig">
+            <img src="assets/img/handmouse/status-pill-states.webp" alt="The HandMouse status pill in five states: No hand, Tracking, Tracking with the ring part-filled, Dragging and Paused, next to the expanded camera view and three cursor rings at different fill levels" width="936" height="635" loading="lazy">
+            <figcaption>The status pill in each state, the expanded camera view, and the cursor ring filling as a pinch closes.</figcaption>
+          </figure>
+          <h3>Gestures</h3>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th scope="col">Gesture</th><th scope="col">Action</th></tr></thead>
+              <tbody>
+                <tr><td>Move your hand</td><td>Move the cursor</td></tr>
+                <tr><td>Thumb + index, tap</td><td>Left click (tap twice to double-click)</td></tr>
+                <tr><td>Thumb + index, hold</td><td>Drag; let go to drop</td></tr>
+                <tr><td>Thumb + middle, tap</td><td>Right-click</td></tr>
+                <tr><td>Thumb + middle, hold, move up or down</td><td>Scroll</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="tutorial">
+      <div class="wrap grid-2">
+        <h2 class="section-title">First-run tutorial</h2>
+        <div class="prose">
+          <p>The first time it opens, HandMouse 2 shows a six-step tutorial, styled after Apple's onboarding screens.</p>
+          <ul>
+            <li><strong>Each step</strong> has an animated hand showing the gesture.</li>
+            <li><strong>It moves on only when you actually do the gesture.</strong></li>
+            <li><strong>A small ring fills as you pinch,</strong> so you can see how close you are.</li>
+            <li><strong>Practice is safe.</strong> While the tutorial is open, clicks and scrolls are kept away from the desktop.</li>
+          </ul>
+          <p>You can replay it from the pill's menu. The <a href="handmouse-guide.html">user guide</a> covers everyday use.</p>
+        </div>
+      </div>
+      <div class="wrap">
+        <figure class="doc-fig wide">
+          <img src="assets/img/handmouse/tutorial-steps.webp" alt="Eight tutorial cards: Raise your hand, Move the pointer, Tap to click, Hold to drag, Right-click, Scroll, the tick shown when a step is done, and You're all set" width="2336" height="1118" loading="lazy">
+          <figcaption>The six tutorial steps, the tick shown when a step is done, and the final screen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="results">
+      <div class="wrap grid-2">
+        <h2 class="section-title">Results</h2>
+        <div class="prose">
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th scope="col">Measure</th><th scope="col">Result</th><th scope="col">How it was measured</th></tr></thead>
+              <tbody>
+                <tr><td>Frame rate</td><td><strong>32 fps</strong></td><td>Live counter in the app, on my laptop</td></tr>
+                <tr><td>Processing time per frame</td><td><strong>18 ms</strong></td><td>Same, averaged over recent frames</td></tr>
+                <tr><td>Cursor jitter with a still hand</td><td>6.9 px → 2.2 px (standard deviation)</td><td>Simulated hand with added noise, not live camera data</td></tr>
+                <tr><td>Gesture logic</td><td>Click, double-click, drag, right-click, scroll and hand-loss release all pass</td><td>Automated tests on simulated hand movements</td></tr>
+                <tr><td>Windows interface</td><td>Status pill and tutorial open correctly</td><td>Run on a simulated Windows environment</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="limitations">
+      <div class="wrap grid-2">
+        <h2 class="section-title">Limitations</h2>
+        <div class="prose">
+          <ul>
+            <li><strong>Tested by one person, on one laptop, in one room.</strong> Pinch thresholds and the reach area were tuned to my hand. Other hands, lighting and cameras may need different settings. These live in a small JSON file next to the app.</li>
+            <li><strong>The jitter figure comes from simulation.</strong> I haven't yet measured cursor jitter or click accuracy with the live camera. A proper test would time target-clicking tasks against a normal mouse and the touchpad.</li>
+            <li><strong>One hand only, and it needs reasonable light.</strong></li>
+            <li><strong>Windows only.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="next">
+      <div class="wrap grid-2">
+        <h2 class="section-title">Next steps</h2>
+        <div class="prose">
+          <ul>
+            <li>A small timed target-clicking test, for real accuracy and speed numbers against the touchpad.</li>
+            <li>Calibration in the tutorial, learning each person's pinch distance instead of using a fixed threshold.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hidden until screenshots exist; tools/optimise_images.py reveals it (files named gesture-01.png, ...) -->
+    <section class="reveal" id="screenshots" hidden>
+      <div class="wrap">
+        <h2 class="section-title">Screenshots</h2>
+        <!-- GALLERY:START (rewritten by tools/optimise_images.py) -->
+        <div class="gallery wide" id="gallery">
+        </div>
+        <!-- GALLERY:END -->
+      </div>
+    </section>
+
+    <section class="reveal doc-sec" id="credits">
+      <div class="wrap grid-2">
+        <h2 class="section-title">Credits and sources</h2>
+        <div class="prose">
+          <ul>
+            <li>MediaPipe Hands (Google), for hand landmark detection.</li>
+            <li>Casiez, G., Roussel, N. and Vogel, D. (2012). <em>1€ Filter: A Simple Speed-based Low-pass Filter for Noisy Input in Interactive Systems.</em> CHI 2012.</li>
+            <li>Apple Human Interface Guidelines, visionOS (gestures, comfort, feedback); Apple Watch double tap (2023).</li>
+            <li>Code written by Claude (Anthropic) to my specification. Source: <a href="handmouse/HandMouse2.py">HandMouse2.py</a>.</li>
+          </ul>
+          <div class="buttons">
+            <a class="btn" href="handmouse-guide.html">User guide</a>
+            <a class="btn" href="index.html#builds">Other builds</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="foot-kicker">Get in touch</p>
+      <a class="foot-mail" href="mailto:krishnachaitanya1879@gmail.com">krishnachaitanya1879@gmail.com</a>
+      <div class="foot-inner">
+        <ul>
+          <li><a href="mailto:krishnachaitanya1879@gmail.com">Email</a></li>
+          <li><a href="https://github.com/PKrshnaChaitanya1879" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://medium.com/@fumblinggum" target="_blank" rel="noopener">Medium</a></li>
+          <li><a href="cv/P_Krishna_Chaitanya_CV.pdf">CV (PDF)</a></li>
+        </ul>
+        <p>© 2026 P. Krishna Chaitanya</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Screenshot viewer">
+    <button class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous screenshot">‹</button>
+    <img alt="" id="lb-img">
+    <button class="lb-btn lb-next" type="button" aria-label="Next screenshot">›</button>
+  </dialog>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/motion.js"></script>
+</body>
+</html>

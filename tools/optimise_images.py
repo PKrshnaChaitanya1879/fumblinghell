@@ -8,7 +8,7 @@ What it does
     (max 1800 px wide, under ~250 KB) and the gallery in index.html is rewritten.
   * Any photo called endeavour-*.jpg/.png (game screenshots) -> assets/img/endeavour/<name>.webp
     and the gallery on endeavour.html is rewritten.
-  * Same idea for jarvis-* (jarvis.html), gesture-* (gesture-control.html) and
+  * Same idea for jarvis-* (jarvis.html), gesture-* (handmouse.html) and
     bio-* (bio-opener.html). Each page's Screenshots section stays hidden until it has images.
   * Any other photo (e.g. rocket-motor.jpg) -> assets/img/<name>.webp
     The project cards look for rocket-motor.webp, openvsp-model.webp and
@@ -52,7 +52,7 @@ GALLERIES = {
     "fuji-": ("index.html", IMG / "photography", "gallery"),
     "endeavour-": ("endeavour.html", IMG / "endeavour", "gallery wide"),
     "jarvis-": ("jarvis.html", IMG / "jarvis", "gallery wide"),
-    "gesture-": ("gesture-control.html", IMG / "gesture", "gallery wide"),
+    "gesture-": ("handmouse.html", IMG / "handmouse", "gallery wide"),
     "bio-": ("bio-opener.html", IMG / "bio", "gallery wide"),
 }
 

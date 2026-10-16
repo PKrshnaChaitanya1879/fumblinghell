@@ -20,7 +20,9 @@ this repo is what visitors see.
 | `cv/P_Krishna_Chaitanya_CV.pdf` | The PDF that the "Download CV" button opens. |
 | `endeavour.html` | The Endeavour game sub page (screenshots, what's in it). |
 | `endeavour/` | The full Endeavour game website (its own look, script, fonts and images). Live at `/endeavour/`. See `endeavour/README.md`. |
-| `jarvis.html`, `gesture-control.html`, `bio-opener.html` | Sub pages for the other three AI-directed builds. |
+| `jarvis.html`, `handmouse.html`, `bio-opener.html` | Sub pages for the other three AI-directed builds. `handmouse-guide.html` is the HandMouse 2 user guide; `gesture-control.html` now just forwards to `handmouse.html`. |
+| `handmouse/HandMouse2.py` | HandMouse 2 source code. The `.exe` (about 100 MB) is too big for the repo; upload it to a GitHub Release named so the file is `HandMouse2.exe`, and the Download buttons pick up the newest one. |
+| `nupc-poster.html` | Write-up of the NUPC poster. The poster image is held back for now (see the comment in the page). |
 | `tools/optimise_images.py` | Shrinks photos from `photos/` and fills the gallery. |
 | `.nojekyll` | Tells GitHub Pages "just serve the files as they are". Leave it. |
 
