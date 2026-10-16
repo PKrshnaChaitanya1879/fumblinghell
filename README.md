@@ -10,6 +10,7 @@ this repo is what visitors see.
 |---|---|
 | `index.html` | The whole page: every piece of text, every section. |
 | `assets/css/style.css` | How it looks: colours, fonts, spacing, light and dark themes. The colours live at the top under "Tokens". |
+| `assets/js/motion.js` | The motion graphics: the flowing-lines animation behind your name, letters that rise in, counters, the scrolling word band, image wipes, card tilt, the cursor ring. Visitors who turn on "reduce motion" get a calm, still version. |
 | `assets/js/main.js` | The small bits of movement: fade-in on scroll, the light/dark switch, the reading-progress bar, highlighting the current section in the menu, swapping in photos, the photo viewer. |
 | `assets/img/` | Optimised images used by the site (favicon, share image, project photos). |
 | `assets/img/photography/` | The optimised gallery photos. |
