@@ -271,3 +271,16 @@ section { padding: clamp(56px, 9vw, 112px) 0; border-top: 1px solid var(--line);
   .js .reveal, .js .reveal .bar { opacity: 1; transform: none; transition: none; }
   .essay, .btn { transition: none; }
 }
+
+/* ---------- Sub pages ---------- */
+.page-hero { padding: clamp(56px, 10vw, 120px) 0 clamp(40px, 6vw, 72px); }
+.page-hero h1 { margin-top: 24px; }
+.page-hero .lede { max-width: 20em; }
+.page-hero .small { margin-top: 16px; }
+.back { font-size: 15px; }
+.more { display: inline-block; margin-top: 8px; font-size: 16px; font-weight: 500; }
+.facts { border-top: 1px solid var(--line); }
+.facts li { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.facts h3 { font-size: 19px; }
+.facts p { margin-top: 6px; color: var(--muted); font-size: 16px; max-width: 34em; }
+#how .buttons { margin-top: 32px; }
