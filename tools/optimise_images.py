@@ -8,6 +8,8 @@ What it does
     (max 1800 px wide, under ~250 KB) and the gallery in index.html is rewritten.
   * Any photo called endeavour-*.jpg/.png (game screenshots) -> assets/img/endeavour/<name>.webp
     and the gallery on endeavour.html is rewritten.
+  * Same idea for jarvis-* (jarvis.html), gesture-* (gesture-control.html) and
+    bio-* (bio-opener.html). Each page's Screenshots section stays hidden until it has images.
   * Any other photo (e.g. rocket-motor.jpg) -> assets/img/<name>.webp
     The project cards look for rocket-motor.webp, openvsp-model.webp and
     cavity-flow.webp automatically.
@@ -49,6 +51,9 @@ def save(path: Path, out: Path, max_w: int):
 GALLERIES = {
     "fuji-": ("index.html", IMG / "photography", "gallery"),
     "endeavour-": ("endeavour.html", IMG / "endeavour", "gallery wide"),
+    "jarvis-": ("jarvis.html", IMG / "jarvis", "gallery wide"),
+    "gesture-": ("gesture-control.html", IMG / "gesture", "gallery wide"),
+    "bio-": ("bio-opener.html", IMG / "bio", "gallery wide"),
 }
 
 
@@ -83,6 +88,8 @@ def main():
         block = '<!-- GALLERY:START (rewritten by tools/optimise_images.py) -->\n        <div class="' + GALLERIES[prefix][2] + '" id="gallery">\n' \
                 + "\n".join(items) + '\n        </div>\n        <!-- GALLERY:END -->'
         new = re.sub(r"<!-- GALLERY:START.*?<!-- GALLERY:END -->", lambda m: block, text, flags=re.S)
+        # sub pages ship with the Screenshots section hidden; show it once there are images
+        new = new.replace('id="screenshots" hidden>', 'id="screenshots">')
         page.write_text(new, encoding="utf-8")
         print(f"{page.name}: gallery updated with {len(items)} photo(s).")
 
