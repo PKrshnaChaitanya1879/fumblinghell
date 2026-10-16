@@ -284,3 +284,6 @@ section { padding: clamp(56px, 9vw, 112px) 0; border-top: 1px solid var(--line);
 .facts h3 { font-size: 19px; }
 .facts p { margin-top: 6px; color: var(--muted); font-size: 16px; max-width: 34em; }
 #how .buttons { margin-top: 32px; }
+.gallery.wide { column-count: 1; }
+@media (min-width: 760px) { .gallery.wide { column-count: 2; column-gap: 20px; } }
+.gallery-note { margin-top: 8px; color: var(--muted); font-size: 14px; }

@@ -47,8 +47,8 @@ def save(path: Path, out: Path, max_w: int):
 
 # Photo-name prefix -> (page to update, folder for the optimised copies, label for the alt-text fallback)
 GALLERIES = {
-    "fuji-": ("index.html", IMG / "photography"),
-    "endeavour-": ("endeavour.html", IMG / "endeavour"),
+    "fuji-": ("index.html", IMG / "photography", "gallery"),
+    "endeavour-": ("endeavour.html", IMG / "endeavour", "gallery wide"),
 }
 
 
@@ -63,7 +63,7 @@ def main():
     for p in files:
         prefix = next((k for k in GALLERIES if p.stem.lower().startswith(k)), None)
         if prefix:
-            _, folder = GALLERIES[prefix]
+            _, folder, _ = GALLERIES[prefix]
             folder.mkdir(parents=True, exist_ok=True)
             w, h = save(p, folder / (p.stem + ".webp"), 1800)
             alt = html.escape(ALT.get(p.stem) or p.stem.replace("-", " ").replace("_", " ").title())
@@ -80,7 +80,7 @@ def main():
             continue
         page = ROOT / GALLERIES[prefix][0]
         text = page.read_text(encoding="utf-8")
-        block = '<!-- GALLERY:START (rewritten by tools/optimise_images.py) -->\n        <div class="gallery" id="gallery">\n' \
+        block = '<!-- GALLERY:START (rewritten by tools/optimise_images.py) -->\n        <div class="' + GALLERIES[prefix][2] + '" id="gallery">\n' \
                 + "\n".join(items) + '\n        </div>\n        <!-- GALLERY:END -->'
         new = re.sub(r"<!-- GALLERY:START.*?<!-- GALLERY:END -->", lambda m: block, text, flags=re.S)
         page.write_text(new, encoding="utf-8")
