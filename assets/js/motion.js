@@ -32,7 +32,7 @@
     var W = 0, H = 0, parts = [], colour = '', running = false, visible = true, t = 0;
     var mouse = { x: -9999, y: -9999 };
 
-    function readColour() { colour = cssVar('--accent') || '#2c46d6'; }
+    function readColour() { colour = cssVar('--text') || '#161614'; }
     function resize() {
       var r = host.getBoundingClientRect();
       W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
@@ -58,7 +58,7 @@
       ctx.fillStyle = 'rgba(0,0,0,0.045)';
       ctx.fillRect(0, 0, W, H);
       ctx.globalCompositeOperation = 'source-over';
-      ctx.strokeStyle = colour; ctx.globalAlpha = 0.5; ctx.lineWidth = 1.1;
+      ctx.strokeStyle = colour; ctx.globalAlpha = 0.26; ctx.lineWidth = 0.9;
       ctx.beginPath();
       for (var i = 0; i < parts.length; i++) {
         var p = parts[i];
@@ -237,32 +237,86 @@
     el.addEventListener('pointerleave', function () { el.style.transform = ''; });
   }
 
-  /* ---------- Cursor ring ---------- */
+  /* ---------- Crosshair cursor with coordinate readout ---------- */
   function cursor() {
-    var ring = document.createElement('div'); ring.className = 'cursor'; ring.setAttribute('aria-hidden', 'true');
-    var label = document.createElement('span'); ring.appendChild(label);
-    document.body.appendChild(ring);
+    var c = document.createElement('div'); c.className = 'cursor'; c.setAttribute('aria-hidden', 'true');
+    c.innerHTML = '<span class="box"></span><span class="xy"></span><span class="tag-l"></span>';
+    document.body.appendChild(c);
+    root.classList.add('has-cursor');
+    var xy = c.querySelector('.xy'), tag = c.querySelector('.tag-l');
     var x = -100, y = -100, rx = -100, ry = -100;
+    function pad(n) { n = Math.round(n); return ('0000' + n).slice(-4); }
     document.addEventListener('pointermove', function (e) {
-      x = e.clientX; y = e.clientY; ring.classList.add('on');
+      x = e.clientX; y = e.clientY; c.classList.add('on');
       var t = e.target.closest ? e.target.closest('a, button, .tile') : null;
       var word = '';
       if (t) {
         if (t.closest('.tile')) { word = 'View'; }
         else if (t.classList.contains('build-card') || t.classList.contains('essay')) { word = 'Open'; }
       }
-      ring.classList.toggle('hover', !!t);
-      ring.classList.toggle('label', !!word);
-      label.textContent = word;
+      c.classList.toggle('hover', !!t);
+      c.classList.toggle('label', !!word);
+      tag.textContent = word;
+      xy.textContent = 'X ' + pad(e.pageX) + '  Y ' + pad(e.pageY);
     });
-    document.addEventListener('pointerleave', function () { ring.classList.remove('on'); });
-    document.addEventListener('pointerdown', function () { ring.classList.add('down'); });
-    document.addEventListener('pointerup', function () { ring.classList.remove('down'); });
+    document.addEventListener('pointerleave', function () { c.classList.remove('on'); });
     (function loop() {
-      rx += (x - rx) * 0.2; ry += (y - ry) * 0.2;
-      ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
+      rx += (x - rx) * 0.35; ry += (y - ry) * 0.35;
+      c.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
       window.requestAnimationFrame(loop);
     })();
+  }
+
+  /* ---------- Loader: quick percentage count, once per session ---------- */
+  function loader() {
+    var seen = false;
+    try { seen = sessionStorage.getItem('pkc-loaded') === '1'; sessionStorage.setItem('pkc-loaded', '1'); } catch (e) { seen = true; }
+    if (seen) { return; }
+    var l = document.createElement('div'); l.className = 'loader'; l.setAttribute('aria-hidden', 'true');
+    l.innerHTML = '<span class="ln-h"></span><span class="lbl">P. Krishna Chaitanya · drawing sheet</span><span class="pct">000%</span>';
+    document.body.appendChild(l);
+    var pct = l.querySelector('.pct'), t0 = null, dur = 1100;
+    function frame(ts) {
+      if (t0 === null) { t0 = ts; }
+      var k = Math.min((ts - t0) / dur, 1), v = Math.round(easeOutExpo(k) * 100);
+      pct.textContent = ('00' + v).slice(-3) + '%';
+      l.style.setProperty('--k', easeOutExpo(k));
+      if (k < 1) { window.requestAnimationFrame(frame); }
+      else { l.classList.add('done'); window.setTimeout(function () { l.remove(); }, 1000); }
+    }
+    window.requestAnimationFrame(frame);
+  }
+
+  /* ---------- Scroll-built drawing ---------- */
+  function drawingStory(story) {
+    var fig = story.querySelector('.drawing'), steps = story.querySelectorAll('.dstep');
+    if (!fig || !steps.length) { return; }
+    function setStage(n) {
+      fig.classList.remove('s0', 's1', 's2', 's3', 's4'); fig.classList.add('s' + n);
+      steps.forEach(function (st) { st.classList.toggle('current', +st.getAttribute('data-stage') === n); });
+    }
+    setStage(0);
+    if (!hasIO) { setStage(4); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { setStage(+e.target.getAttribute('data-stage')); } });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    steps.forEach(function (st) { io.observe(st); });
+  }
+
+  /* ---------- Pinned statement fills in letter by letter ---------- */
+  function statement(sec) {
+    var p = sec.querySelector('p');
+    if (!p) { return; }
+    splitLetters(p);
+    var chars = p.querySelectorAll('.ch');
+    function update() {
+      var r = sec.getBoundingClientRect(), span = r.height - window.innerHeight;
+      var k = span > 0 ? Math.max(0, Math.min(1, -r.top / span)) : 1;
+      var on = Math.round(k * 1.15 * chars.length);
+      chars.forEach(function (ch, i) { ch.classList.toggle('on', i < on); });
+    }
+    window.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
+    update();
   }
 
   /* =================== wire up =================== */
@@ -272,6 +326,7 @@
   if (reduce) { return; } // everything below is pure motion
 
   root.classList.add('motion');
+  loader();
 
   // Hero title + lede
   var h1 = heroHost && heroHost.querySelector('h1');
@@ -280,12 +335,15 @@
   if (lede) { splitWords(lede); window.requestAnimationFrame(function () { lede.classList.add('go'); }); }
 
   // Section titles rise letter by letter when they enter
+  document.querySelectorAll('.drawing-story').forEach(drawingStory);
+  document.querySelectorAll('.statement').forEach(statement);
+
   var titles = document.querySelectorAll('h2.section-title');
   titles.forEach(splitLetters);
   whenVisible(titles, function (el) { el.classList.add('go'); }, 0.4);
 
   // Mono labels decode
-  whenVisible(document.querySelectorAll('.sec-num, .status dt, .build-card .kicker, .essay-source, .foot-kicker, .back'), scramble, 0.6);
+  whenVisible(document.querySelectorAll('.sec-num, .status dt, .build-card .kicker, .essay-source, .foot-kicker, .back, .dstep .k'), scramble, 0.6);
 
   // Counters
   whenVisible(document.querySelectorAll('.stats .num, .bar-value'), countUp, 0.6);
@@ -301,8 +359,7 @@
 
   // Pointer-only flourishes
   if (finePointer) {
-    document.querySelectorAll('.build-card').forEach(function (el) { tilt(el, 7); });
-    document.querySelectorAll('.status').forEach(function (el) { tilt(el, 5); });
+    document.querySelectorAll('.status').forEach(function (el) { tilt(el, 4); });
     document.querySelectorAll('.btn, .theme-toggle').forEach(magnetic);
     cursor();
   }
