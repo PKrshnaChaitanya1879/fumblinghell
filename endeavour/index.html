@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endeavour — Champagne with a crack in the glass</title>
+<meta name="description" content="Endeavour is a spy prologue aboard a luxury liner where something boarded with the guests. Built in Unity by one person directing AI.">
+<meta property="og:title" content="Endeavour">
+<meta property="og:description" content="A spy prologue aboard a luxury liner where something boarded with the guests.">
+<meta property="og:image" content="img/hero-kill.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Cpath d='M9 8h14v3H13v3.5h9v3h-9V21h10v3H9z' fill='%23EBA6C6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-booting">
+
+<!-- ============ BOOT LOADER ============ -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot__inner">
+    <p class="boot__title mono">ENDEAVOUR // SHIP SYSTEMS</p>
+    <ol class="boot__lines mono" id="bootLines">
+      <li><span>001</span> HULL INTEGRITY <i></i> <b>NOMINAL</b></li>
+      <li><span>002</span> GUEST MANIFEST <i></i> <b>612</b></li>
+      <li><span>003</span> CREW MANIFEST <i></i> <b>148</b></li>
+      <li><span>004</span> CASINO DECK <i></i> <b>OPEN</b></li>
+      <li><span>005</span> MEETING ROOM 7-C <i></i> <b>SEALED</b></li>
+      <li><span>006</span> CARGO BAY 2 · BOTANICAL <i></i> <b>WARM</b></li>
+      <li class="is-alert"><span>007</span> CONTAINMENT <i></i> <b>NO RESPONSE</b></li>
+    </ol>
+    <div class="boot__bar"><div class="boot__fill" id="bootFill"></div></div>
+    <button class="boot__skip mono" id="bootSkip" type="button">Skip</button>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="nav__mark" href="#top" aria-label="Endeavour, back to top">ENDEAVOUR</a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#story">Story</a>
+    <a href="#crew">Crew</a>
+    <a href="#ship">Ship</a>
+    <a href="#powers">Powers</a>
+    <a href="#build">How it was made</a>
+  </nav>
+  <span class="nav__status mono"><i class="dot"></i>Prologue · in development</span>
+  <button class="nav__toggle mono" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+</header>
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <a href="#story">Story</a><a href="#crew">Crew</a><a href="#ship">Ship</a><a href="#powers">Powers</a><a href="#build">How it was made</a>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <img class="hero__img" src="img/hero-kill.jpg" alt="In-game shot: Seren Voss rises over the meeting table as glowing veins split across her, while the board members sit frozen.">
+  <div class="hud" aria-hidden="true">
+    <span class="hud__tl mono">CAM 03 · VENT 4B → MEETING ROOM 7-C</span>
+    <span class="hud__tr mono"><i class="rec"></i>REC <span id="clock">23:41:07</span></span>
+    <span class="hud__xy mono" id="hudXY">X:0960PX &nbsp;Y:0468PX</span>
+    <span class="hud__corner hud__corner--tl"></span><span class="hud__corner hud__corner--tr"></span>
+    <span class="hud__corner hud__corner--bl"></span><span class="hud__corner hud__corner--br"></span>
+  </div>
+  <div class="hero__copy">
+    <h1 class="hero__title">Champagne with a crack in&nbsp;the&nbsp;glass.</h1>
+    <p class="hero__sub">A spy prologue aboard the luxury liner Endeavour. Something boarded with the guests.</p>
+    <div class="hero__cta">
+      <a class="btn btn--accent" href="#story">Read the file</a>
+      <a class="btn btn--ghost" href="#build">How it was made</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto">
+  <p class="manifesto__text">Iris Vance came aboard for shore leave. She followed a waiter, looked through a vent, and watched the ship's hostess <em>stop being human.</em> Now the Endeavour is in lockdown, and it is still flying.</p>
+</section>
+
+<!-- ============ [01] STORY ============ -->
+<section class="section" id="story">
+  <div class="section__head">
+    <span class="tag mono">[01]</span>
+    <h2>The night, in five beats</h2>
+  </div>
+  <ol class="beats">
+    <li class="beat">
+      <figure><img src="img/iris-casino.jpg" alt="Iris on the casino floor in her blue gown" loading="lazy"></figure>
+      <span class="beat__n mono">01</span>
+      <h3>Shore leave</h3>
+      <p>"Three weeks undercover on Thessaly Station, and my reward is a floating casino."</p>
+    </li>
+    <li class="beat">
+      <figure><img src="img/private-corridor.jpg" alt="The gold private corridor with a red runner" loading="lazy"></figure>
+      <span class="beat__n mono">02</span>
+      <h3>The waiter</h3>
+      <p>A waiter slips off the service route, down a corridor guests aren't meant to see. Iris follows.</p>
+    </li>
+    <li class="beat">
+      <figure><img src="img/hero-kill.jpg" alt="Voss changing over the meeting table" loading="lazy"></figure>
+      <span class="beat__n mono">03</span>
+      <h3>Vent 4B</h3>
+      <p>Through the slats: a private board meeting, and the hostess Seren Voss. "Seren...?"</p>
+    </li>
+    <li class="beat">
+      <figure><img src="img/corridor-veyra.jpg" alt="A corridor drifting with pink Veyra spores" loading="lazy"></figure>
+      <span class="beat__n mono">04</span>
+      <h3>Lockdown</h3>
+      <p>The ship seals itself. Pink spores drift down the corridors. Complimentary drinks will be served.</p>
+    </li>
+    <li class="beat">
+      <figure><img src="img/iris-gearup.jpg" alt="Iris tying her hair up after cutting her gown short" loading="lazy"></figure>
+      <span class="beat__n mono">05</span>
+      <h3>Gear up</h3>
+      <p>A garter knife, one clean cut through the gown. "Right. Mobility over modesty."</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ [02] CREW ============ -->
+<section class="section section--split" id="crew">
+  <div class="section__head">
+    <span class="tag mono">[02]</span>
+    <h2>Persons of interest</h2>
+    <p class="section__lede">Five files recovered from the ship's guest and crew records. Some entries were sealed before we got to them.</p>
+  </div>
+  <div class="dossiers">
+    <article class="file file--lead">
+      <figure class="file__photo"><img src="img/dossier-iris.jpg" alt="Iris Vance, red hair, tying it up" loading="lazy"></figure>
+      <div class="file__body">
+        <p class="file__id mono">FILE 01 · GUEST</p>
+        <h3>Iris Vance</h3>
+        <p>25. Composed, cold, very hard to read. Long red hair, blue gown, a knife in the garter, and one glove she never takes off.</p>
+        <dl class="mono"><dt>Cover</dt><dd>Off-duty guest</dd><dt>Status</dt><dd class="accent">Infected</dd></dl>
+      </div>
+    </article>
+    <article class="file">
+      <figure class="file__photo"><img src="img/dossier-voss.jpg" alt="Seren Voss mid-transformation, veins glowing" loading="lazy"></figure>
+      <div class="file__body">
+        <p class="file__id mono">FILE 02 · OWNER</p>
+        <h3>Seren Voss <span class="aka">"The Host"</span></h3>
+        <p>Mid-forties, silver hair, black and gold. Warm and charming on the surface.</p>
+        <dl class="mono"><dt>Since</dt><dd><span class="redact">██████████</span></dd><dt>Status</dt><dd>Unknown</dd></dl>
+      </div>
+    </article>
+    <article class="file">
+      <figure class="file__photo"><img src="img/dossier-castell.jpg" alt="Dr. Aurel Castell at the meeting table" loading="lazy"></figure>
+      <div class="file__body">
+        <p class="file__id mono">FILE 03 · RESEARCH</p>
+        <h3>Dr. Aurel Castell</h3>
+        <p>Grey beard, glasses, a lab shirt under a formal jacket. Gentle, nervous, knew too much. Last word: "Seren...?"</p>
+        <dl class="mono"><dt>Status</dt><dd>Deceased</dd></dl>
+      </div>
+    </article>
+    <article class="file">
+      <figure class="file__photo file__photo--none"><span class="mono">NO PHOTO ON FILE</span></figure>
+      <div class="file__body">
+        <p class="file__id mono">FILE 04 · ENGINEERING</p>
+        <h3>Mira Okonjo</h3>
+        <p>Ship engineer, soft-spoken. Wears her brother's cracked survey badge and touches it when she's scared.</p>
+        <dl class="mono"><dt>Brother</dt><dd><span class="redact">████████</span></dd><dt>Status</dt><dd>With Iris</dd></dl>
+      </div>
+    </article>
+    <article class="file">
+      <figure class="file__photo file__photo--none"><span class="mono">FILE SEALED</span></figure>
+      <div class="file__body">
+        <p class="file__id mono">FILE 05 · GUEST SERVICES</p>
+        <h3>Lena Marsh <span class="aka">"The Steward"</span></h3>
+        <p>Late twenties, perfect uniform, sharp black bob. A polite smile that never reaches her eyes.</p>
+        <dl class="mono"><dt>Status</dt><dd><span class="redact">██████</span></dd></dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ [03] SHIP ============ -->
+<section class="section section--ship" id="ship">
+  <div class="section__head">
+    <span class="tag mono">[03]</span>
+    <h2>Deck 7</h2>
+    <p class="section__lede">Pick a room on the plan.</p>
+  </div>
+  <div class="deck">
+    <svg class="deck__plan" viewBox="0 0 640 420" role="group" aria-label="Deck 7 plan. Select a room.">
+      <defs>
+        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="currentColor" stroke-opacity=".07"/></pattern>
+      </defs>
+      <rect width="640" height="420" fill="url(#grid)"/>
+      <path class="deck__hull" d="M40 210 C40 120 90 40 200 40 H560 Q600 40 600 80 V340 Q600 380 560 380 H200 C90 380 40 300 40 210Z"/>
+      <g class="room" data-room="casino" tabindex="0" role="button" aria-label="Casino hall"><rect x="70" y="150" width="150" height="120"/><text x="80" y="170">CASINO HALL</text></g>
+      <g class="room" data-room="corridor" tabindex="0" role="button" aria-label="Private corridor"><rect x="220" y="195" width="90" height="30"/><text x="226" y="214">PRIVATE CORR.</text></g>
+      <g class="room" data-room="meeting" tabindex="0" role="button" aria-label="Meeting room 7-C"><rect x="310" y="170" width="70" height="80"/><text x="316" y="188">MTG 7-C</text></g>
+      <g class="room" data-room="lounge" tabindex="0" role="button" aria-label="Starlight lounge"><rect x="110" y="70" width="140" height="70"/><text x="120" y="90">STARLIGHT LOUNGE</text></g>
+      <g class="room" data-room="service" tabindex="0" role="button" aria-label="Service passage"><rect x="380" y="200" width="90" height="22"/><text x="386" y="215">SERVICE</text></g>
+      <g class="room" data-room="cargo" tabindex="0" role="button" aria-label="Cargo bay"><rect x="470" y="60" width="110" height="130"/><text x="480" y="80">CARGO BAY 2</text></g>
+      <g class="room" data-room="lab" tabindex="0" role="button" aria-label="Veyra wing"><rect x="400" y="250" width="100" height="110"/><text x="410" y="270">VEYRA WING</text></g>
+      <g class="room" data-room="engineering" tabindex="0" role="button" aria-label="Engineering"><rect x="500" y="230" width="80" height="130"/><text x="506" y="250">ENGINEERING</text></g>
+      <g class="room" data-room="obs" tabindex="0" role="button" aria-label="Observation deck"><rect x="250" y="290" width="140" height="70"/><text x="260" y="310">OBSERVATION</text></g>
+      <text class="deck__north" x="606" y="34">N ↑</text>
+    </svg>
+    <div class="deck__view" aria-live="polite">
+      <figure><img id="roomImg" src="img/casino-hall.jpg" alt=""></figure>
+      <div class="deck__meta">
+        <p class="mono deck__coord" id="roomCoord">D7 · 00 · 29.7 × 19.8 M</p>
+        <h3 id="roomName">Casino hall</h3>
+        <p id="roomText">Emerald wallpaper, gold rails, chandeliers twice the height of a person. 125 props, all placed by script.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ [04] POWERS ============ -->
+<section class="section" id="powers">
+  <div class="section__head">
+    <span class="tag mono">[04]</span>
+    <h2>What Veyra gave her</h2>
+    <p class="section__lede">It got into her hand during the kill. Each power glows white-pink across her face while she uses it.</p>
+  </div>
+  <ol class="powers">
+    <li><kbd class="mono">Q</kbd><div><h3>Lift</h3><p>Look at an object and pull it into the air. Throw it at whatever is coming.</p></div></li>
+    <li><kbd class="mono">F</kbd><div><h3>Force Burst</h3><p>Let it out all at once: staggers enemies, reflects shots, breaks weakened walls.</p></div></li>
+    <li><kbd class="mono">V</kbd><div><h3>Stillness</h3><p>Slow the world around her. It drains Strain, and the room goes quiet and pink.</p></div></li>
+  </ol>
+</section>
+
+<!-- ============ KEY ART ============ -->
+<section class="keyart">
+  <figure class="keyart__a"><img src="img/keyart-voss.jpg" data-fallback="img/corridor-veyra.jpg" alt="Key art: Seren Voss with a clawed shadow on the wallpaper behind her" loading="lazy"></figure>
+  <figure class="keyart__b"><img src="img/keyart-iris.jpg" data-fallback="img/iris-gearup.jpg" alt="Key art: Iris Vance in her cut gown, blade drawn" loading="lazy"></figure>
+  <p class="keyart__cap mono" id="keyartCap" data-art="Key art made with Grok Imagine from in-game references." data-fallback="In-game captures, Unity 6.">Key art made with Grok Imagine from in-game references.</p>
+</section>
+
+<!-- ============ PART TWO ============ -->
+<div class="paper" id="build">
+
+<section class="part">
+  <p class="mono part__label">Part two</p>
+  <h2 class="part__title">One person directed it. AI built it.</h2>
+  <p class="part__lede">Endeavour is an experiment in how far current AI can be pushed on a real game. GUM directed every decision. Claude wrote the C#, the shaders, the Blender models and rigs, the animations, the textures and the sound. The only hands-on step was shaping the characters in VRoid Studio.</p>
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <span class="tag mono">[05]</span>
+    <h2>The rules</h2>
+  </div>
+  <ol class="rules">
+    <li><span class="mono">01</span><p><strong>Claude and free tools only.</strong> No paid assets, no asset store, no outsourcing.</p></li>
+    <li><span class="mono">02</span><p><strong>No hand edits.</strong> Every fix goes back through a prompt, even when fixing it by hand would be faster.</p></li>
+    <li><span class="mono">03</span><p><strong>Log every failure.</strong> Where the AI broke is the real result of the experiment.</p></li>
+    <li><span class="mono">04</span><p><strong>Run on a student laptop.</strong> Ryzen 3 5300U, integrated graphics, no graphics card.</p></li>
+  </ol>
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <span class="tag mono">[06]</span>
+    <h2>Pipeline</h2>
+  </div>
+  <ol class="pipe">
+    <li><span class="mono">VRoid Studio</span><p>Characters shaped by hand, exported as VRM.</p></li>
+    <li><span class="mono">Blender · cloud</span><p>Headless Blender converts, rigs, models enemies and keys every animation from Python.</p></li>
+    <li><span class="mono">FBX · Humanoid</span><p>Mixamo-named skeletons, so one set of clips drives every human.</p></li>
+    <li><span class="mono">Unity 6 · URP</span><p>Custom toon shader, editor scripts that build and dress each level.</p></li>
+  </ol>
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <span class="tag mono">[07]</span>
+    <h2>Day one, and now</h2>
+    <p class="section__lede">Drag across the frame.</p>
+  </div>
+  <div class="compare" id="compare" style="--pos:50%">
+    <img src="img/casino-hall.jpg" alt="Version 4: the dressed casino hall with chandeliers and red carpet">
+    <div class="compare__before"><img src="img/v1-greybox.jpg" alt="Version 1: the casino corridor as grey boxes seen from above in the Unity editor"></div>
+    <span class="compare__label compare__label--l mono">v1.0 · grey box</span>
+    <span class="compare__label compare__label--r mono">v4.0 · dressed</span>
+    <input class="compare__range" type="range" min="0" max="100" value="50" aria-label="Reveal version 1 versus version 4">
+    <span class="compare__handle" aria-hidden="true"></span>
+  </div>
+  <ol class="versions mono">
+    <li><b>v1.0</b> Playable skeleton: story, combat, three powers, boss, checkpoints</li>
+    <li><b>v2.0</b> Colour and personality: toon look, real character models, creatures</li>
+    <li><b>v3.0</b> Combat depth: animation sets, sword styles, guns</li>
+    <li><b>v4.0</b> Ship interiors: props, wallpaper, chandeliers, warm grade</li>
+    <li><b>v4.x</b> Cutscenes with acting, hair and cloth physics, ship map, room sound</li>
+  </ol>
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <span class="tag mono">[08]</span>
+    <h2>By the numbers</h2>
+  </div>
+  <dl class="stats">
+    <div><dt class="mono">Props placed by script</dt><dd>338</dd></div>
+    <div><dt class="mono">Spring bones in hair and cloth</dt><dd>179</dd></div>
+    <div><dt class="mono">Rooms on the ship map</dt><dd>13</dd></div>
+    <div><dt class="mono">Casino frame rate on integrated graphics</dt><dd>~40<small>fps</small></dd></div>
+  </dl>
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <span class="tag mono">[09]</span>
+    <h2>Where the AI broke</h2>
+    <p class="section__lede">From the build log. Each one cost a session.</p>
+  </div>
+  <ol class="fails">
+    <li><span class="mono">STORY</span><p>The first death animation was a poisoning. The script says she lunges. Rewritten from scratch.</p></li>
+    <li><span class="mono">CODE</span><p>Iris's outfit reset to the gown every frame, so the gear-up cut never showed.</p></li>
+    <li><span class="mono">UNITY</span><p>Asking for "Unity" opened a second editor on the same project. Now it always goes through Unity Hub.</p></li>
+    <li><span class="mono">FILES</span><p>Sound files came out of the laptop bridge corrupted, about 5.8&nbsp;KB too big each. Now they travel as text.</p></li>
+    <li><span class="mono">MAP</span><p>The minimap never appeared: Play mode skipped the scene reload it waited for.</p></li>
+    <li><span class="mono">VIDEO</span><p>Grok clips drifted mid-shot: a second glove, a lost hair bun, a man laughing at his own death.</p></li>
+    <li><span class="mono">NIGHT</span><p>The laptop slept. Four scheduled runs wrote code that nobody could test until morning.</p></li>
+  </ol>
+</section>
+
+<section class="closing">
+  <img src="img/starlight-lounge.jpg" alt="Blender render of the Starlight lounge set seen from above: red sofas, a gold bar, a compass rose in the floor" loading="lazy">
+  <div class="closing__copy">
+    <h2>The prologue is still being built.</h2>
+    <p>Follow the build log for the next deck, the boss rooms, and every new thing that breaks.</p>
+    <a class="btn btn--dark" href="https://medium.com/@fumblinggum" rel="noopener">Read the build log</a>
+  </div>
+</section>
+
+</div><!-- /paper -->
+</main>
+
+<footer class="footer mono">
+  <span>ENDEAVOUR · an original prologue · 2026</span>
+  <span>Directed by GUM · Built with Claude, Unity 6, Blender, VRoid Studio</span>
+  <span>All images are in-game captures, except the Starlight lounge (a Blender render of the set) and anything marked as key art.</span>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
