@@ -6,6 +6,8 @@
 What it does
   * Any photo called fuji-*.jpg/.png  -> assets/img/photography/<name>.webp
     (max 1800 px wide, under ~250 KB) and the gallery in index.html is rewritten.
+  * Any photo called endeavour-*.jpg/.png (game screenshots) -> assets/img/endeavour/<name>.webp
+    and the gallery on endeavour.html is rewritten.
   * Any other photo (e.g. rocket-motor.jpg) -> assets/img/<name>.webp
     The project cards look for rocket-motor.webp, openvsp-model.webp and
     cavity-flow.webp automatically.
@@ -21,7 +23,6 @@ from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC, IMG = ROOT / "photos", ROOT / "assets" / "img"
-GALLERY = IMG / "photography"
 EXT = {".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff"}
 LIMIT = 250 * 1024
 ALT_FILE = ROOT / "tools" / "alt_text.json"  # plain descriptions, one per photo name
@@ -44,6 +45,13 @@ def save(path: Path, out: Path, max_w: int):
     return im.size
 
 
+# Photo-name prefix -> (page to update, folder for the optimised copies, label for the alt-text fallback)
+GALLERIES = {
+    "fuji-": ("index.html", IMG / "photography", "gallery"),
+    "endeavour-": ("endeavour.html", IMG / "endeavour", "gallery wide"),
+}
+
+
 def main():
     files = sorted(p for p in SRC.iterdir() if p.suffix.lower() in EXT) if SRC.exists() else []
     if not files:
@@ -51,27 +59,32 @@ def main():
         return
     ALT = json.loads(ALT_FILE.read_text(encoding="utf-8")) if ALT_FILE.exists() else {}
     IMG.mkdir(parents=True, exist_ok=True)
-    GALLERY.mkdir(parents=True, exist_ok=True)
-    tiles = []
+    tiles = {prefix: [] for prefix in GALLERIES}
     for p in files:
-        if p.stem.lower().startswith("fuji-"):
-            w, h = save(p, GALLERY / (p.stem + ".webp"), 1800)
+        prefix = next((k for k in GALLERIES if p.stem.lower().startswith(k)), None)
+        if prefix:
+            _, folder, _ = GALLERIES[prefix]
+            folder.mkdir(parents=True, exist_ok=True)
+            w, h = save(p, folder / (p.stem + ".webp"), 1800)
             alt = html.escape(ALT.get(p.stem) or p.stem.replace("-", " ").replace("_", " ").title())
-            tiles.append(
+            rel = (folder / (p.stem + ".webp")).relative_to(ROOT).as_posix()
+            tiles[prefix].append(
                 f'          <figure class="tile"><button type="button" aria-label="Open photo: {alt}">'
-                f'<img src="assets/img/photography/{p.stem}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy">'
+                f'<img src="{rel}" alt="{alt}" width="{w}" height="{h}" loading="lazy">'
                 f"</button></figure>"
             )
         else:
             save(p, IMG / (p.stem + ".webp"), 1600)
-    if tiles:
-        page = ROOT / "index.html"
+    for prefix, items in tiles.items():
+        if not items:
+            continue
+        page = ROOT / GALLERIES[prefix][0]
         text = page.read_text(encoding="utf-8")
-        block = '<!-- GALLERY:START (rewritten by tools/optimise_images.py) -->\n        <div class="gallery" id="gallery">\n' \
-                + "\n".join(tiles) + '\n        </div>\n        <!-- GALLERY:END -->'
+        block = '<!-- GALLERY:START (rewritten by tools/optimise_images.py) -->\n        <div class="' + GALLERIES[prefix][2] + '" id="gallery">\n' \
+                + "\n".join(items) + '\n        </div>\n        <!-- GALLERY:END -->'
         new = re.sub(r"<!-- GALLERY:START.*?<!-- GALLERY:END -->", lambda m: block, text, flags=re.S)
         page.write_text(new, encoding="utf-8")
-        print(f"Gallery updated with {len(tiles)} photo(s).")
+        print(f"{page.name}: gallery updated with {len(items)} photo(s).")
 
 
 if __name__ == "__main__":

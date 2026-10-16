@@ -17,6 +17,7 @@ this repo is what visitors see.
 | `cv/cv.md` | The text of your CV. Edit this one. |
 | `cv/build_cv.py` | Turns `cv.md` into the one-page PDF. |
 | `cv/P_Krishna_Chaitanya_CV.pdf` | The PDF that the "Download CV" button opens. |
+| `endeavour.html` | The Endeavour game sub page (screenshots, what's in it). |
 | `tools/optimise_images.py` | Shrinks photos from `photos/` and fills the gallery. |
 | `.nojekyll` | Tells GitHub Pages "just serve the files as they are". Leave it. |
 
@@ -41,6 +42,7 @@ It is right only if your repository is named exactly `pkrshnachaitanya1879.githu
 
 1. Put your photos in the `photos/` folder.
    * Gallery photos must start with `fuji-`, for example `fuji-01.jpg`.
+   * Game screenshots for the Endeavour page must start with `endeavour-`, for example `endeavour-01.png`.
    * Project photos: `rocket-motor.jpg`, `lab-uoh.jpg` (the Research card), `openvsp-model.jpg`, `cavity-flow.jpg`.
 2. (Optional) add a plain description of each photo to `tools/alt_text.json`; it becomes the photo's alt text for screen readers.
 3. Run: `python3 tools/optimise_images.py` (needs `pip install pillow` once).
