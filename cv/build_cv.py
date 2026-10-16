@@ -24,7 +24,7 @@ OUT = HERE / "P_Krishna_Chaitanya_CV.pdf"
 
 # Chemical formulas get real subscripts (Helvetica has no subscript characters).
 SUBS = {
-    "K0.48Na0.52NbO3": "K<sub>0.48</sub>Na<sub>0.52</sub>NbO<sub>3</sub>",
+    "K0.5Na0.5NbO3": "K<sub>0.5</sub>Na<sub>0.5</sub>NbO<sub>3</sub>",
     "K2Nb4O11": "K<sub>2</sub>Nb<sub>4</sub>O<sub>11</sub>",
 }
 
