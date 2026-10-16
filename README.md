@@ -9,7 +9,7 @@ this repo is what visitors see.
 | Path | What it is |
 |---|---|
 | `index.html` | The whole page: every piece of text, every section. |
-| `assets/css/style.css` | How it looks: colours, fonts, spacing, light and dark themes. The colours live at the top under "Tokens". |
+| `assets/css/style.css` | How it looks: the "drawing sheet" style (paper, ink lines, one orange), fonts, spacing, light and dark themes. The colours live at the top under "Tokens". |
 | `assets/js/motion.js` | The motion graphics: the flowing-lines animation behind your name, letters that rise in, counters, the scrolling word band, image wipes, card tilt, the cursor ring. Visitors who turn on "reduce motion" get a calm, still version. |
 | `assets/js/main.js` | The small bits of movement: fade-in on scroll, the light/dark switch, the reading-progress bar, highlighting the current section in the menu, swapping in photos, the photo viewer. |
 | `assets/img/` | Optimised images used by the site (favicon, share image, project photos). |
@@ -54,6 +54,10 @@ It is right only if your repository is named exactly `pkrshnachaitanya1879.githu
 
 **By hand:** save an image as `assets/img/rocket-motor.webp` (or `openvsp-model.webp`,
 `cavity-flow.webp`) and the matching project box fills itself in.
+
+## The rocket drawing
+
+The KNSU motor cross-section in the Projects section is a hand-written SVG inside `index.html` (search for `DWG 01`). Each part sits in a group marked `data-s="1"` to `data-s="4"`; that number is the scroll step at which it draws itself. It is labelled "schematic, not to scale". If you get real dimensions, they can be added as dimension lines.
 
 ## How to edit the CV and rebuild the PDF
 

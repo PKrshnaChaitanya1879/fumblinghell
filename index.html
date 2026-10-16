@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>P. Krishna Chaitanya | Physics, Materials & Flight Mechanics</title>
   <meta name="description" content="Portfolio of P. Krishna Chaitanya, a physics undergraduate at SSSIHL working across lead-free piezoceramics, solid rocket propulsion and flight mechanics.">
-  <meta name="theme-color" content="#fbfbfd">
+  <meta name="theme-color" content="#efeee8">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="P. Krishna Chaitanya | Physics, Materials & Flight Mechanics">
@@ -59,7 +59,7 @@
             <a class="btn" href="https://medium.com/@fumblinggum" target="_blank" rel="noopener">Medium</a>
           </div>
         </div>
-        <aside class="status" aria-label="What I'm working on now">
+        <aside class="status reg" aria-label="What I'm working on now">
           <p class="status-head"><span class="pulse" aria-hidden="true"></span>Currently</p>
           <dl>
             <div><dt>Building</dt><dd>KNSU rocket motor, with an instrumented static fire next</dd></div>
@@ -84,7 +84,7 @@
     <!-- 2. ABOUT -->
     <section class="about reveal" id="about">
       <div class="wrap grid-2">
-        <div class="sec-head"><span class="sec-num">00</span><h2 class="section-title">About</h2></div>
+        <div class="sec-head"><span class="sec-num">[00]</span><h2 class="section-title">About</h2></div>
         <p class="about-text">I'm a physics undergraduate at Sri Sathya Sai Institute of Higher Learning, with a minor in Flight Mechanics. My work so far sits where the lab meets the workshop: synthesising lead-free piezoelectric ceramics, designing and testing a solid rocket motor, and modelling aircraft stability in OpenVSP. I'm working towards a Master's in Physics in Germany, and learning German along the way.</p>
       </div>
     </section>
@@ -92,7 +92,7 @@
     <!-- 3. RESEARCH -->
     <section class="research reveal" id="research">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">01</span><h2 class="section-title">Research</h2></div>
+        <div class="sec-head"><span class="sec-num">[01]</span><h2 class="section-title">Research</h2></div>
         <div class="research-grid">
           <div class="research-copy">
             <h3>Research Intern, School of Engineering Sciences &amp; Technology, University of Hyderabad</h3>
@@ -105,7 +105,7 @@
           </div>
 
           <div class="research-side">
-          <figure class="density" aria-labelledby="density-cap">
+          <figure class="density reg" aria-labelledby="density-cap">
             <figcaption id="density-cap"><span>Sintered relative density</span><span>KNN</span></figcaption>
             <div class="bar-row">
               <span class="bar-label">1000 °C</span>
@@ -131,27 +131,106 @@
       </div>
     </section>
 
+    <!-- Statement -->
+    <section class="statement" aria-label="Where the lab meets the workshop">
+      <div class="pin">
+        <p>Where the lab<span class="sq" aria-hidden="true"></span> meets the workshop</p>
+      </div>
+    </section>
+
     <!-- 4. PROJECTS -->
     <section class="projects reveal" id="projects">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">02</span><h2 class="section-title">Projects</h2></div>
+        <div class="sec-head"><span class="sec-num">[02]</span><h2 class="section-title">Projects</h2></div>
 
-        <!-- Feature project -->
+        <!-- Feature project: scroll-built drawing -->
+        <div class="drawing-story">
+          <div class="drawing-sticky">
+            <figure class="drawing s4" id="motor-drawing">
+              <figcaption class="drawing-head"><span><b>DWG 01</b> · KNSU solid rocket motor</span><span>30 mm variant</span></figcaption>
+            <svg viewBox="0 0 820 380" role="img" aria-labelledby="motor-title motor-desc">
+              <title id="motor-title">KNSU solid rocket motor, schematic cross-section</title>
+              <desc id="motor-desc">Side cross-section of the motor: an aluminium casing holding the KNSU propellant grain around a central combustion core, and a 70:30 plaster-of-Paris and cement nozzle with a metal throat insert at the rear. Schematic, not to scale.</desc>
+              <defs>
+                <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1"/></pattern>
+                <pattern id="xhatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" stroke-width=".8"/><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="currentColor" stroke-width=".5"/></pattern>
+                <pattern id="grain" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" fill="currentColor"/><circle cx="5.5" cy="5.5" r=".7" fill="currentColor"/></pattern>
+              </defs>
+              <path class="cl" d="M60 180 H790"/>
+              <g data-s="1">
+                <rect class="f fill-hatch" x="100" y="110" width="500" height="12" opacity=".55"/>
+                <rect class="f fill-hatch" x="100" y="238" width="500" height="12" opacity=".55"/>
+                <rect class="f fill-hatch" x="100" y="122" width="12" height="116" opacity=".55"/>
+                <path class="ln" pathLength="1" d="M600 110 H100 V250 H600"/>
+                <path class="ln thin" pathLength="1" d="M600 122 H112 V238 H600"/>
+                <path class="ln thin" pathLength="1" d="M160 110 V56 H172"/>
+                <rect class="mk" x="156.5" y="106.5" width="7" height="7"/>
+                <text class="lbl" x="178" y="60">[01] Aluminium casing</text>
+              </g>
+              <g data-s="2">
+                <path class="f fill-grain" d="M124 122 H540 V164 H124 Z M124 196 H540 V238 H124 Z" opacity=".8"/>
+                <path class="ln" pathLength="1" d="M124 122 H540 V164 H124 Z"/>
+                <path class="ln" pathLength="1" d="M124 196 H540 V238 H124 Z"/>
+                <path class="ln thin" pathLength="1" d="M180 236 V304 H192"/>
+                <rect class="mk" x="176.5" y="226.5" width="7" height="7"/>
+                <text class="lbl" x="198" y="308">[02] KNSU propellant grain</text>
+                <path class="ln thin" pathLength="1" d="M420 180 V330 H432"/>
+                <rect class="mk" x="416.5" y="176.5" width="7" height="7"/>
+                <text class="lbl" x="438" y="335">[03] Combustion core</text>
+              </g>
+              <g data-s="3">
+                <path class="f fill-noz" d="M548 122 L604 166 L700 146 V116 H600 V122 Z M548 238 L604 194 L700 214 V244 H600 V238 Z" opacity=".7"/>
+                <path class="ln" pathLength="1" d="M548 122 L604 166 L700 146 V116 H600"/>
+                <path class="ln" pathLength="1" d="M548 238 L604 194 L700 214 V244 H600"/>
+                <path class="solid" d="M594 158 L614 165 L614 171 L594 164 Z M594 202 L614 195 L614 189 L594 196 Z"/>
+                <path class="ln thin" pathLength="1" d="M660 128 V56 H648"/>
+                <rect class="mk" x="656.5" y="124.5" width="7" height="7"/>
+                <text class="lbl" x="642" y="60" text-anchor="end">[04] 70:30 plaster/cement nozzle</text>
+                <path class="ln thin" pathLength="1" d="M604 200 V280 H616"/>
+                <rect class="mk" x="600.5" y="196.5" width="7" height="7"/>
+                <text class="lbl" x="622" y="284">[05] Metal throat insert</text>
+              </g>
+              <g data-s="4">
+                <path class="plume" d="M706 160 C740 152 770 144 806 134"/>
+                <path class="plume" d="M706 180 H812"/>
+                <path class="plume" d="M706 200 C740 208 770 216 806 226"/>
+                <text class="lbl o" x="808" y="104" text-anchor="end">Next: static fire</text>
+              </g>
+              <g class="titleblock">
+                <rect class="tb" x="14" y="324" width="250" height="46"/>
+                <text class="lbl" x="24" y="343">KNSU motor · Section A–A</text>
+                <text class="lbl" x="24" y="361" opacity=".7">Schematic · not to scale</text>
+              </g>
+            </svg>
+              <p class="drawing-legend"><span><i></i>Part markers</span><span>Hatching: casing · dots: propellant · cross-hatch: nozzle</span></p>
+            </figure>
+          </div>
+          <div class="drawing-steps">
+            <div class="dstep" data-stage="1">
+              <span class="k">[A] The motor</span>
+              <div class="card-head"><h3>KNSU Solid Rocket Motor</h3><span class="tag">Ongoing</span></div>
+              <p>Designing and building a sugar-propellant (KNSU) motor with an aluminium casing, flown in a PVC airframe with through-the-wall fins.</p>
+            </div>
+            <div class="dstep" data-stage="2">
+              <span class="k">[B] First launch</span>
+              <p>The first launch attempt did not lift off; I diagnosed insufficient thrust as the cause.</p>
+            </div>
+            <div class="dstep" data-stage="3">
+              <span class="k">[C] Redesign</span>
+              <p>Redesigned the nozzle for a scaled 30 mm variant: a 70:30 plaster-of-Paris/cement composite with a metal throat insert, with STL models and a written design basis.</p>
+            </div>
+            <div class="dstep" data-stage="4">
+              <span class="k">[D] Next</span>
+              <p>Next: an instrumented static fire to measure the thrust curve, and a CP/CG stability check before the next flight.</p>
+            </div>
+          </div>
+        </div>
+
         <article class="card feature">
           <div class="slot" data-src="assets/img/rocket-motor.webp" data-alt="KNSU propellant test casing: a pressed grain in a PVC tube with a drilled combustion-chamber bore">
             <span>Rocket motor photo</span>
           </div>
           <div class="card-body">
-            <div class="card-head">
-              <h3>KNSU Solid Rocket Motor</h3>
-              <span class="tag">Ongoing</span>
-            </div>
-            <ul class="bullets">
-              <li>Designing and building a sugar-propellant (KNSU) motor with an aluminium casing, flown in a PVC airframe with through-the-wall fins.</li>
-              <li>The first launch attempt did not lift off; I diagnosed insufficient thrust as the cause.</li>
-              <li>Redesigned the nozzle for a scaled 30 mm variant: a 70:30 plaster-of-Paris/cement composite with a metal throat insert, with STL models and a written design basis.</li>
-              <li>Next: an instrumented static fire to measure the thrust curve, and a CP/CG stability check before the next flight.</li>
-            </ul>
             <h4>Propellant bench tests</h4>
             <p class="meta">With four teammates · August 2026 · small PVC casings, 2.5 to 3 cm long</p>
             <ul class="bullets">
@@ -203,7 +282,7 @@
     <!-- 5. BUILDS -->
     <section class="builds reveal" id="builds">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">03</span><h2 class="section-title">Builds: directing AI</h2></div>
+        <div class="sec-head"><span class="sec-num">[03]</span><h2 class="section-title">Builds: directing AI</h2></div>
         <p class="builds-intro">Alongside physics, I run experiments in how far AI coding agents can be pushed when I set the vision and direct the work. These were built with AI, not by hand. What they show is scoping, directing and finishing large builds.</p>
         <div class="builds-grid">
           <a class="build-card lead" href="endeavour.html">
@@ -240,7 +319,7 @@
     <!-- 6. WRITING -->
     <section class="writing reveal" id="writing">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">04</span><h2 class="section-title">Writing</h2></div>
+        <div class="sec-head"><span class="sec-num">[04]</span><h2 class="section-title">Writing</h2></div>
         <div class="essays">
         <a class="essay" href="https://medium.com/@fumblinggum/not-a-rock-not-sci-fi-the-real-physics-of-time-crystals-2bad0b5b7f82" target="_blank" rel="noopener">
           <span class="essay-source">Medium · September 2025</span>
@@ -261,7 +340,7 @@
     <!-- 7. PHOTOGRAPHY -->
     <section class="photography reveal" id="photography">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">05</span><h2 class="section-title">Photography</h2></div>
+        <div class="sec-head"><span class="sec-num">[05]</span><h2 class="section-title">Photography</h2></div>
         <p class="subline">Shot on Fujifilm X-M5.</p>
         <!-- GALLERY:START (rewritten by tools/optimise_images.py) -->
         <div class="gallery" id="gallery">
