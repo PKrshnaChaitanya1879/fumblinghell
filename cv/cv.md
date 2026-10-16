@@ -44,18 +44,18 @@ Undergraduate physics student (Honours with Research) with hands-on experience i
 
 ## AI-Directed Software Builds
 
-- Directed AI coding agents (Claude) through builds where I set the scope and design and the AI wrote the code: a Unity 6 game prologue taken through four versions, a Windows voice assistant with local speech-to-text and OCR, a webcam hand-tracking mouse (MediaPipe), a bio and opener generator, a CLI habit tracker, and a pipeline that turns my lab data into report PDFs.
+- Directed AI coding agents (Claude) through builds where I set the scope and design and the AI wrote the code: a Unity 6 game prologue taken through four versions, a Windows voice assistant with local speech-to-text and OCR, HandMouse 2, a webcam hand-control app for Windows (MediaPipe), a bio and opener generator, a CLI habit tracker, and a pipeline that turns my lab data into report PDFs.
 
 ## Academic Presentation
 
-**Poster — Photobiomodulation and glucose modulation under red-light exposure**
+**Poster — Red-light interaction with mitochondria for glucose regulation** | NUPC, IISER Tirupati
 
-- A literature review organised into a structured poster covering motivation, mechanism, key observations and future scope.
+- A simplified mitochondrial signalling model (MATLAB SimBiology) and a tissue optical fluence simulation of red-light photobiomodulation, compared with clinical data showing lower blood glucose after 670 nm light.
 
 ## Technical Skills
 
 - **Programming:** Python (NumPy, SciPy, Matplotlib): numerical methods and lab-data analysis.
-- **Scientific and engineering tools:** OpenVSP / VSPAERO, Scilab, Excel / Google Sheets, AI coding agents (Claude Code).
+- **Scientific and engineering tools:** OpenVSP / VSPAERO, MATLAB SimBiology, Scilab, Excel / Google Sheets, AI coding agents (Claude Code).
 - **Experimental:** solid-state synthesis, ball milling, pellet pressing and sintering, geometric density measurement, XRD sample preparation, analog and digital electronics, error analysis.
 - **Engineering:** aerodynamics and flight stability (coursework), propulsion fundamentals, fabrication and prototyping.
 - **Communication:** literature review, technical writing, poster presentation.
