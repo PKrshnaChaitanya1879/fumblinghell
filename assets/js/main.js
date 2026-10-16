@@ -3,6 +3,37 @@
   var root = document.documentElement;
   root.classList.add('js');
 
+  /* ---- Theme toggle (light / dark), remembered on this device ---- */
+  var toggle = document.querySelector('.theme-toggle');
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  function currentTheme() {
+    var set = root.getAttribute('data-theme');
+    if (set) { return set; }
+    return prefersDark && prefersDark.matches ? 'dark' : 'light';
+  }
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) { /* storage blocked: theme still switches */ }
+    });
+  }
+
+  /* ---- Scroll progress bar and nav shadow ---- */
+  var bar = document.querySelector('.progress');
+  var nav = document.querySelector('.nav');
+  var ticking = false;
+  function onScroll() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) { bar.style.setProperty('--p', max > 0 ? Math.min(window.scrollY / max, 1) : 0); }
+    if (nav) { nav.classList.toggle('scrolled', window.scrollY > 8); }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
   /* ---- Scroll reveal ---- */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
@@ -14,6 +45,29 @@
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---- Highlight the nav link for the section in view (home page) ---- */
+  var links = {};
+  document.querySelectorAll('.nav ul a[href^="#"]').forEach(function (a) {
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  if ('IntersectionObserver' in window && Object.keys(links).length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var link = links[e.target.id];
+        if (!link) { return; }
+        if (e.isIntersecting) {
+          Object.keys(links).forEach(function (k) { links[k].classList.remove('active'); links[k].removeAttribute('aria-current'); });
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'true');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(links).forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) { spy.observe(sec); }
+    });
   }
 
   /* ---- Image slots: if the file exists, swap the placeholder for it ---- */
