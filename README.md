@@ -9,8 +9,8 @@ this repo is what visitors see.
 | Path | What it is |
 |---|---|
 | `index.html` | The whole page: every piece of text, every section. |
-| `assets/css/style.css` | How it looks: colours, fonts, spacing. |
-| `assets/js/main.js` | The small bits of movement: fade-in on scroll, swapping in photos, the photo viewer. |
+| `assets/css/style.css` | How it looks: colours, fonts, spacing, light and dark themes. The colours live at the top under "Tokens". |
+| `assets/js/main.js` | The small bits of movement: fade-in on scroll, the light/dark switch, the reading-progress bar, highlighting the current section in the menu, swapping in photos, the photo viewer. |
 | `assets/img/` | Optimised images used by the site (favicon, share image, project photos). |
 | `assets/img/photography/` | The optimised gallery photos. |
 | `photos/` | **Your originals.** Drop photos here. They are never changed. |
