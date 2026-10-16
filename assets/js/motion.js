@@ -336,6 +336,7 @@
 
   // Section titles rise letter by letter when they enter
   document.querySelectorAll('.drawing-story').forEach(drawingStory);
+  whenVisible(document.querySelectorAll('.xrd'), function (el) { el.classList.add('drawn'); }, 0.3);
   document.querySelectorAll('.statement').forEach(statement);
 
   var titles = document.querySelectorAll('h2.section-title');
