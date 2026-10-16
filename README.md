@@ -19,6 +19,7 @@ this repo is what visitors see.
 | `cv/build_cv.py` | Turns `cv.md` into the one-page PDF. |
 | `cv/P_Krishna_Chaitanya_CV.pdf` | The PDF that the "Download CV" button opens. |
 | `endeavour.html` | The Endeavour game sub page (screenshots, what's in it). |
+| `endeavour/` | The full Endeavour game website (its own look, script, fonts and images). Live at `/endeavour/`. See `endeavour/README.md`. |
 | `jarvis.html`, `gesture-control.html`, `bio-opener.html` | Sub pages for the other three AI-directed builds. |
 | `tools/optimise_images.py` | Shrinks photos from `photos/` and fills the gallery. |
 | `.nojekyll` | Tells GitHub Pages "just serve the files as they are". Leave it. |
