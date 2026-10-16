@@ -55,11 +55,6 @@ Undergraduate physics student (Honours with Research) with hands-on experience i
 
 - Reviewed the literature and organised the scientific background into a structured poster covering motivation, mechanism, key observations and future scope.
 
-## Laboratory Experience
-
-- **Electronics (Analog and Digital):** circuit analysis and measurement, standard laboratory instrumentation, interpretation of experimental observations.
-- **Mechanics:** measurement, data collection, graphical analysis and error analysis.
-
 ## Technical Skills
 
 - **Programming:** Python (NumPy, SciPy, Matplotlib, ReportLab) — numerical simulation, data analysis and automated report generation.

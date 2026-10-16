@@ -58,13 +58,15 @@ def parse(md: str):
 
 
 def build(font: float, gap: float, margin_mm: float) -> int:
-    lead = font * 1.3
+    lead = font * 1.25
     body = ParagraphStyle("body", fontName="Helvetica", fontSize=font, leading=lead, alignment=TA_LEFT)
     name = ParagraphStyle("name", parent=body, fontName="Helvetica-Bold", fontSize=font * 2.0, leading=font * 2.2)
     contact = ParagraphStyle("contact", parent=body, fontSize=font * 0.95, spaceAfter=gap * 0.5)
     head = ParagraphStyle("head", parent=body, fontName="Helvetica-Bold", fontSize=font * 1.08, leading=font * 1.3,
                           spaceBefore=gap * 1.5, spaceAfter=0)
     item = ParagraphStyle("item", parent=body, spaceAfter=gap * 0.25)
+    # lines holding chemical subscripts need a little extra height so they never touch the next line
+    item_sub = ParagraphStyle("item_sub", parent=item, leading=font * 1.42)
 
     story, bullets, first_p_after_h1 = [], [], True
 
@@ -72,7 +74,7 @@ def build(font: float, gap: float, margin_mm: float) -> int:
         nonlocal bullets
         if bullets:
             story.append(ListFlowable(
-                [ListItem(Paragraph(inline(t), item), leftIndent=11, value="•") for t in bullets],
+                [ListItem(Paragraph(inline(t), item_sub if "<sub>" in inline(t) else item), leftIndent=11, value="•") for t in bullets],
                 bulletType="bullet", start="•", leftIndent=11, bulletFontSize=font * 0.9, bulletOffsetY=0,
             ))
             bullets = []
@@ -103,8 +105,9 @@ def build(font: float, gap: float, margin_mm: float) -> int:
 
 def main():
     # Try the roomiest settings first, then tighten spacing, then type size.
-    for font in (9.2, 9.0, 8.8, 8.6, 8.4, 8.2, 8.0):
-        for gap, margin in ((5.0, 15), (4.5, 14.5), (4.0, 14), (3.5, 13.5), (3.0, 13), (2.5, 12.5), (2.0, 12), (1.5, 11)):
+    fonts = [round(10.0 - 0.1 * i, 1) for i in range(0, 21)]  # 10.0 pt down to 8.0 pt
+    for font in fonts:
+        for gap, margin in ((5.0, 15), (4.5, 14.5), (4.0, 14), (3.5, 13.5), (3.0, 13), (2.5, 12.5), (2.0, 12), (1.5, 11.5), (1.5, 11)):
             pages = build(font, gap, margin)
             if pages == 1:
                 print(f"OK: 1 page (font {font} pt, gap {gap}, margin {margin} mm) -> {OUT}")
