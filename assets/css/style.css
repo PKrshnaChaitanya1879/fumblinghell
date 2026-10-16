@@ -655,7 +655,9 @@ h4.mini + .bullets li:first-child { margin-top: 8px; }
 .doc-fig img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line-strong); }
 .doc-fig figcaption { margin-top: 8px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
 .doc-fig.wide { margin-top: 32px; }
-.poster-slot { aspect-ratio: 485 / 686; max-width: 320px; border: 1px solid var(--line-strong); }
+.card-row .poster-thumb { display: flex; align-items: center; justify-content: center; padding: 20px; background: var(--surface-2); border-bottom: 1px solid var(--line-strong); }
+.card-row .poster-thumb img { display: block; width: auto; max-width: 100%; height: auto; max-height: 340px; border: 1px solid var(--line-strong); }
+@media (min-width: 760px) { .card-row .poster-thumb { border-bottom: 0; border-right: 1px solid var(--line-strong); } }
 
 /* Builds: small thumbnail on a regular build card */
 .build-card .card-thumb { width: 96px; height: auto; border: 1px solid var(--line-strong); margin-bottom: 6px; }
@@ -667,3 +669,4 @@ h4.mini + .bullets li:first-child { margin-top: 8px; }
   .card-row { grid-template-columns: 1fr 2fr; }
   .card-row .slot { border-bottom: 0; border-right: 1px solid var(--line-strong); aspect-ratio: auto; min-height: 220px; }
 }
+.page-hero h1.long-title { font-size: clamp(30px, 6.4vw, 84px); overflow-wrap: normal; hyphens: manual; }

@@ -48,7 +48,7 @@ Undergraduate physics student (Honours with Research) with hands-on experience i
 
 ## Academic Presentation
 
-**Poster — Red-light interaction with mitochondria for glucose regulation** | NUPC, IISER Tirupati
+**Poster — Red-light interaction with mitochondria for glucose regulation** | NUPC, IISER Tirupati | with Amar Manas Akula
 
 - A simplified mitochondrial signalling model (MATLAB SimBiology) and a tissue optical fluence simulation of red-light photobiomodulation, compared with clinical data showing lower blood glucose after 670 nm light.
 
