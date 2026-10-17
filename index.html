@@ -51,7 +51,7 @@
         <div class="hero-main">
           <h1>P. Krishna<br>Chaitanya</h1>
           <p class="lede">Physics undergraduate working across materials, propulsion and flight mechanics.</p>
-          <p class="small">B.Sc. (Hons.) Physics with Research · Flight Mechanics minor · SSSIHL, India</p>
+          <p class="small">B.S. (Hons. with Research) Physics · Flight Mechanics minor · SSSIHL, India</p>
           <div class="buttons">
             <a class="btn primary" href="cv/P_Krishna_Chaitanya_CV.pdf">Download CV</a>
             <a class="btn" href="mailto:krishnachaitanya1879@gmail.com">Email</a>
@@ -71,7 +71,7 @@
       </div>
       <div class="wrap">
         <ul class="stats" aria-label="Highlights">
-          <li><span class="num">91.4%</span><span class="lab">best geometric density, KNN pellets</span></li>
+          <li><span class="num">91.4%</span><span class="lab">best measured relative density, KNN pellet</span></li>
           <li><span class="num">2</span><span class="lab">calcination schedules compared by XRD</span></li>
           <li><span class="num">30 mm</span><span class="lab">scaled nozzle, redesigned after the first launch</span></li>
           <li><span class="num">4</span><span class="lab">software builds directed with AI</span></li>
@@ -106,11 +106,22 @@
             </ul>
             <h4 class="mini">Results</h4>
             <ul class="bullets">
-              <li>XRD of both calcined powders shows the main orthorhombic KNN perovskite phase plus a minor K₂Nb₄O₁₁ secondary phase.</li>
-              <li>Sintering at 1000 °C for 2 h did not densify the pellets (63–64%). At 1100 °C for 4 h the best pellets reached 88.7% (B1) and 91.4% (B2).</li>
-              <li>All densities were measured geometrically, from caliper dimensions and mass.</li>
+              <li>XRD (X-ray diffraction) of both calcined powders shows the orthorhombic KNN perovskite pattern, plus a few weak peaks near 25.8°, 27.7°, 29.5° and 34.5° that are not yet assigned. They may be a minor secondary phase; Rietveld refinement is the next step.</li>
+              <li>Sintering at 1000 °C for 2 h did not densify the pellets (63–64%). At 1100 °C for 4 h the best measured pellets reached 88.7% (B1, one pellet) and 91.4% (B2, best of two).</li>
+              <li>All densities are geometric (caliper dimensions and mass), relative to a theoretical density of 4.48 g/cm³.</li>
             </ul>
-            <p class="note">Not yet done: XRD of the sintered pellets, Archimedes density, and electrical or piezoelectric tests, which need above 95% density.</p>
+            <div class="table-scroll prose density-table">
+              <table>
+                <thead><tr><th scope="col">Batch (calcined)</th><th scope="col">Sintered</th><th scope="col">Pellets</th><th scope="col">Relative density (%)</th></tr></thead>
+                <tbody>
+                  <tr><td>B1 · 825 °C / 4 h</td><td>1000 °C / 2 h</td><td>3</td><td>63.2, 64.2, 63.8</td></tr>
+                  <tr><td>B1 · 825 °C / 4 h</td><td>1100 °C / 4 h</td><td>1</td><td>88.73</td></tr>
+                  <tr><td>B2 · 900 °C / 2 h</td><td>1100 °C / 4 h</td><td>2</td><td>91.40, 91.27</td></tr>
+                  <tr><td>B2 · 900 °C / 2 h</td><td>1150 °C / 4 h</td><td>2</td><td>pending</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">Not yet done: XRD of the sintered pellets, Archimedes density, and electrical or piezoelectric tests. My report sets 95% relative density as the target before those tests.</p>
           </div>
 
           <div class="research-side">
@@ -159,7 +170,7 @@
               <text class="axl" x="420" y="448" text-anchor="middle">2θ (degrees) · Cu Kα</text>
               <text class="axl" x="16" y="220" text-anchor="middle" transform="rotate(-90 16 220)">Intensity (normalised, offset)</text>
             </svg>
-          <p class="drawing-legend"><span>* minor K₂Nb₄O₁₁ secondary-phase peaks</span><span>Main peaks labelled with pseudo-cubic indices</span><span>Kα₂ stripped, lightly smoothed, normalised and offset</span></p>
+          <p class="drawing-legend"><span>* weak peaks, not yet assigned</span><span>Main peaks labelled with pseudo-cubic indices</span><span>Kα₂ stripped, lightly smoothed, normalised and offset</span></p>
         </figure>
 
         <div class="buttons report-link">
