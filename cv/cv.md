@@ -21,7 +21,7 @@ Undergraduate physics student (Honours with Research) with hands-on experience i
 *Under Prof. Dibakar Das | 18 May – 18 June 2026 | Hyderabad, India*
 
 - Synthesised lead-free K0.48Na0.52NbO3 (KNN) piezoceramics by the solid-state route; did the weighing, wet ball milling, calcination, pressing, binder burnout and sintering myself, and prepared the XRD samples.
-- Compared two calcination batches (825 °C / 4 h and 900 °C / 2 h); XRD showed the main orthorhombic KNN perovskite phase with a minor K2Nb4O11 secondary phase.
+- Compared two calcination batches (825 °C / 4 h and 900 °C / 2 h); XRD showed the orthorhombic KNN perovskite pattern, with weak peaks not yet assigned.
 - Sintering at 1000 °C / 2 h gave no densification (63–64%); at 1100 °C / 4 h the best pellets reached 88.7% and 91.4% geometric density.
 
 ## Projects
