@@ -670,3 +670,4 @@ h4.mini + .bullets li:first-child { margin-top: 8px; }
   .card-row .slot { border-bottom: 0; border-right: 1px solid var(--line-strong); aspect-ratio: auto; min-height: 220px; }
 }
 .page-hero h1.long-title { font-size: clamp(30px, 6.4vw, 84px); overflow-wrap: normal; hyphens: manual; }
+.report-link { margin-top: 24px; }
