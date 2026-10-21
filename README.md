@@ -20,7 +20,7 @@ this repo is what visitors see.
 | `cv/P_Krishna_Chaitanya_CV.pdf` | The PDF that the "Download CV" button opens. |
 | `endeavour.html` | The Endeavour game sub page (screenshots, what's in it). |
 | `endeavour/` | The full Endeavour game website (its own look, script, fonts and images). Live at `/endeavour/`. See `endeavour/README.md`. |
-| `jarvis.html`, `handmouse.html`, `bio-opener.html` | Sub pages for the other three AI-directed builds. `handmouse-guide.html` is the HandMouse 2 user guide; `gesture-control.html` now just forwards to `handmouse.html`. |
+| `grvty.html`, `handmouse.html`, `bio-opener.html` | Sub pages for the other three AI-directed builds. `handmouse-guide.html` is the HandMouse 2 user guide; `gesture-control.html` now just forwards to `handmouse.html`, and `jarvis.html` forwards to `grvty.html`. |
 | `handmouse/HandMouse2.py` | HandMouse 2 source code. The `.exe` (about 100 MB) is too big for the repo; upload it to a GitHub Release named so the file is `HandMouse2.exe`, and the Download buttons pick up the newest one. |
 | `nupc-poster.html` | Write-up of the NUPC poster, with the poster image (`assets/img/nupc-poster.webp`). |
 | `tools/optimise_images.py` | Shrinks photos from `photos/` and fills the gallery. |
@@ -48,7 +48,7 @@ It is right only if your repository is named exactly `pkrshnachaitanya1879.githu
 1. Put your photos in the `photos/` folder.
    * Gallery photos must start with `fuji-`, for example `fuji-01.jpg`.
    * Game screenshots for the Endeavour page must start with `endeavour-`, for example `endeavour-01.png`.
-   * Screenshots for the other builds start with `jarvis-`, `gesture-` or `bio-`. Each of those pages shows its Screenshots section only once it has images.
+   * Screenshots for the other builds start with `grvty-`, `gesture-` or `bio-`. Each of those pages shows its Screenshots section only once it has images.
    * Project photos: `rocket-motor.jpg`, `lab-uoh.jpg` (the Research card), `openvsp-model.jpg`, `cavity-flow.jpg`.
 2. (Optional) add a plain description of each photo to `tools/alt_text.json`; it becomes the photo's alt text for screen readers.
 3. Run: `python3 tools/optimise_images.py` (needs `pip install pillow` once).
