@@ -36,7 +36,7 @@ Undergraduate physics student (Honours with Research) with hands-on experience i
 **Aerodynamic Modelling in OpenVSP (Aug 2026)**
 
 - Built an OpenVSP aircraft model and ran a first VSPAERO span-load analysis at α = 0°, 5° and 10°; a clean rerun is planned.
-- Completed all 30 lectures of the NPTEL course *Aircraft Stability and Control* (Prof. A. K. Ghosh, IIT Kanpur); certification examination on 25 October 2026.
+- NPTEL *Aircraft Stability and Control* (Prof. A. K. Ghosh, IIT Kanpur, Jul–Oct 2026): Elite certificate, 61% consolidated.
 
 **Computational Physics in Python**
 
