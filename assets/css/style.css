@@ -621,7 +621,7 @@ h4.mini + .bullets li:first-child { margin-top: 8px; }
 
 /* Smaller AI-built tools under the Builds grid */
 .mini-builds { display: grid; border: 1px solid var(--line-strong); border-top: 0; }
-@media (min-width: 760px) { .mini-builds { grid-template-columns: 1fr 1fr; } .mini-builds li + li { border-left: 1px solid var(--line); } }
+@media (min-width: 760px) { .mini-builds { grid-template-columns: 1fr 1fr; } .mini-builds li:nth-child(even) { border-left: 1px solid var(--line); } .mini-builds li:nth-child(n+3) { border-top: 1px solid var(--line); } }
 @media (max-width: 759px) { .mini-builds li + li { border-top: 1px solid var(--line); } }
 .mini-builds li { padding: 18px 24px; display: grid; gap: 4px; }
 .mini-builds .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
